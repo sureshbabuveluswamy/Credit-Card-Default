@@ -1,6 +1,6 @@
 # 🏦 Credit Card Default Prediction
 
-![alt text](image-4.png)
+![alt text](Credit-card-Default.png)
 
 ## 📊 Project Overview
 
