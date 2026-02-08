@@ -58,5 +58,4 @@ There are 25 variables:
 | **PAY_AMT4** | Amount of previous payment in June, 2005 (NT dollar) |
 | **PAY_AMT5** | Amount of previous payment in May, 2005 (NT dollar) |
 | **PAY_AMT6** | Amount of previous payment in April, 2005 (NT dollar) |
-| **default.payment.next.month** | Default payment (1=yes, 0=no) |
-
+| **default_status** | Default payment (1=yes, 0=no) |
