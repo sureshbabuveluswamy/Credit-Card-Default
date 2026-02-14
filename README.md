@@ -17,7 +17,46 @@ This project covers Binary Classification using the following models:
 5. **Ensemble Model - Random Forest** - Bagging ensemble of decision trees
 6. **Ensemble Model - XGBoost** - Gradient boosting ensemble method
 
-## 📁 Dataset Description
+## �️ Installation and Setup
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip package manager
+
+### Installation Steps
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/sureshbabuveluswamy/Credit-Card-Default.git
+cd Credit-Card-Default
+```
+
+2. Install required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the Streamlit application:
+
+```bash
+streamlit run model/creditcard_streamlit.py
+```
+
+### Dependencies
+
+- **streamlit** : Web application framework
+- **scikit-learn** : Machine learning library
+- **numpy** : Numerical computing
+- **pandas** : Data manipulation and analysis
+- **matplotlib** : Data visualization
+- **seaborn** : Statistical data visualization
+- **xgboost** : Gradient boosting library
+- **joblib** : Model serialization
+
+## �📁 Dataset Description
 
 **Dataset**: Default of Credit Card Clients Dataset
 
