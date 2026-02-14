@@ -59,12 +59,12 @@ def load_models():
     models = {}
     
     model_files = {
-        'Logistic Regression': 'Logistic_Regression.pkl',
-        'Decision Tree': 'Decision_Tree_Classifier.pkl',
-        'K-Nearest Neighbors': 'K_Nearest_Neighbor_Classifier.pkl',
-        'Naive Bayes': 'Naive_Bayes_Classifier_Gaussian.pkl',
-        'Random Forest': 'Ensemble_Model_Random_Forest.pkl',
-        'XGBoost': 'Ensemble_Model_XGBoost.pkl'
+        'Logistic Regression': 'LogisticRegression.pkl',
+        'Decision Tree': 'DecisionTreeClassifier.pkl',
+        'K-Nearest Neighbors': 'KNearestNeighborClassifier.pkl',
+        'Naive Bayes': 'NaiveBayesClassifierGaussian.pkl',
+        'Random Forest': 'EnsembleModelRandomForest.pkl',
+        'XGBoost': 'EnsembleModelXGBoost.pkl'
     }
     
     for model_name, filename in model_files.items():
