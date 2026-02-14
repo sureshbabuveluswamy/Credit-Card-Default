@@ -88,10 +88,19 @@ models, scaler, feature_names, numerical_features = load_models()
 
 # Sidebar for navigation
 st.sidebar.title("🔧 Navigation")
-page = st.sidebar.selectbox(
-    "Select Page:",
-    ["📋 Model Overview", "📊 Model Visualization", "📥 Download Dataset", "📤 Upload & Predict", "📈 Model Evaluation"]
-)
+
+# Initialize session state for page selection
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "📋 Model Overview"
+
+# Navigation buttons
+pages = ["📋 Model Overview", "📊 Model Visualization", "📥 Download Dataset", "📤 Upload & Predict", "📈 Model Evaluation"]
+
+for page in pages:
+    if st.sidebar.button(page, use_container_width=True):
+        st.session_state.current_page = page
+
+page = st.session_state.current_page
 
 # Page 1: Model Overview
 if page == "📋 Model Overview":
