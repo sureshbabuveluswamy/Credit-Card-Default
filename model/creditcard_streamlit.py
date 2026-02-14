@@ -96,7 +96,7 @@ page = st.sidebar.selectbox(
 if page == "📋 Model Overview":
     st.markdown('<h2 class="section-header">📋 Model Overview</h2>', unsafe_allow_html=True)
     
-    st.write("### Available Models")
+    st.write("### Available Models") 
     
     for model_name in models.keys():
         with st.expander(f"🤖 {model_name}"):
