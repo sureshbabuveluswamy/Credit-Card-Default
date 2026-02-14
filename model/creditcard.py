@@ -777,25 +777,25 @@ print(f"   y_test_orig shape: {y_test_orig.shape}")
 print(f"   Features: {list(X_test_orig.columns)}")
 
 # %%
-# 6.6 Export the models to .pkl files
+# 6.6 Export models to .pkl files (with compression)
 
-print("💾 Exporting trained models to .pkl files")
+print("💾 Exporting trained models to compressed .pkl files")
 print("=" * 80)
 
 # Use absolute path to model folder
 models_dir = '/Users/ps/Documents/Credit-Card-Default/model'
 os.makedirs(models_dir, exist_ok=True)
 
-# Export each trained model as .pkl file
+# Export each trained model as compressed .pkl file
 for model_name, model in trained_models.items():
     # Create a safe filename (replace spaces and special chars)
     safe_name = model_name.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
     filename = f"{safe_name}.pkl"
     filepath = os.path.join(models_dir, filename)
     
-    # Save model using joblib
-    joblib.dump(model, filepath)
-    print(f"✅ Exported: {filepath}")
+    # Save model using joblib with compression
+    joblib.dump(model, filepath, compress=('zlib', 3))  # Use compression level 3
+    print(f"✅ Exported: {filepath} (compressed)")
 
 # Save scaler
 scaler_path = os.path.join(models_dir, 'scaler.pkl')
