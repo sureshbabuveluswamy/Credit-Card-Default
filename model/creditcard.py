@@ -515,7 +515,7 @@ knn_model = KNeighborsClassifier(n_neighbors=10)
 naive_bayes_model = GaussianNB()
 
 # 6.2.5 Random Forest
-random_forest_model = RandomForestClassifier(random_state=42, n_estimators=2500, max_depth=10, min_samples_split=10, min_samples_leaf=5)
+random_forest_model = RandomForestClassifier(random_state=42, n_estimators=1500, max_depth=10, min_samples_split=10, min_samples_leaf=5)
 
 # 6.2.6 XGBoost
 xgboost_model = XGBClassifier(random_state=42, eval_metric='logloss', n_estimators=200,use_label_encoder=False,learning_rate=0.0001,max_depth=6,subsample=0.8,colsample_bytree=0.8)
