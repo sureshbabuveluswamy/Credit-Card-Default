@@ -55,7 +55,8 @@ and we aim to predict which clients will default on their payments in the follow
 # Load models from folder
 @st.cache_data
 def load_models():
-    models_dir = '/Users/ps/Documents/Credit-Card-Default/model'
+    # Use current file's directory for cross-platform compatibility
+    models_dir = os.path.dirname(os.path.abspath(__file__))
     models = {}
     
     model_files = {
