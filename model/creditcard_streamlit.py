@@ -450,7 +450,7 @@ elif page == "📈 Model Evaluation":
         - Highest accuracy (82.57%)
         - Best AUC score (0.845)
         - Good balance of precision and recall
-        """
+        """)
     
     with col2:
         st.warning("""
