@@ -450,7 +450,7 @@ elif page == "📈 Model Evaluation":
         - Highest accuracy (82.57%)
         - Best AUC score (0.845)
         - Good balance of precision and recall
-        """)
+        """
     
     with col2:
         st.warning("""
@@ -461,11 +461,12 @@ elif page == "📈 Model Evaluation":
         """)
     
     with col3:
-        st.error("""
-        **🔍 High Recall: Naive Bayes**
-        - Highest recall (87.93%)
-        - Catches most defaults
-        - High false positive rate
+        st.info("""
+        **🎯 Strong Performer: Random Forest**
+        - High accuracy (80.11%)
+        - Strong AUC score (0.717)
+        - High precision (68.64%)
+        - Conservative but reliable
         """)
 
 # Page 6: README

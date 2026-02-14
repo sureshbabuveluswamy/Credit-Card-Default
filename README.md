@@ -147,15 +147,16 @@ Based on the training set evaluation, here are the observations for each model:
 | **Decision Tree** | Very poor performance with low accuracy (23.21%) and negative MCC (-0.29). High recall (59.20%) but extremely low precision (16.20%), meaning it over-predicts defaults. Likely overfitting to training data. |
 | **kNN** | Best overall performance with highest accuracy (82.57%) and AUC (0.84). Good balance of precision (72.56%) and recall (34.11%) with strong F1 score (0.46). Most reliable model for this dataset. |
 | **Naive Bayes** | Low accuracy (42.27%) but highest recall (87.93%) for detecting defaults. Very low precision (26.10%) indicates many false positives. Good for catching potential defaulters but with high false alarm rate. |
-| **Random Forest (Ensemble)** | Good performance with accuracy (80.11%) and strong AUC (0.72). High precision (68.64%) but low recall (18.59%), suggesting it's conservative in predicting defaults. Better than previous results. |
+| **Random Forest (Ensemble)** | Strong performance with accuracy (80.11%) and strong AUC (0.72). High precision (68.64%) but low recall (18.59%), suggesting it's conservative in predicting defaults. Better than previous results with reduced n_estimators (500). |
 | **XGBoost (Ensemble)** | Good accuracy (79.77%) with strong AUC (0.74). High precision (72.32%) but low recall (13.83%). Similar to Logistic Regression in being conservative but with slightly better precision. |
 
 ### Key Insights:
 - **kNN is the top performer** with the best balance of all metrics
+- **Random Forest** shows strong performance with reduced complexity (n_estimators=500)
 - **Logistic Regression** is the most conservative model with highest precision
 - **Naive Bayes** catches the most defaults (highest recall) but with many false alarms
-- **Decision Tree and Random Forest** show signs of poor generalization
-- **Ensemble methods** (Random Forest, XGBoost) underperformed compared to kNN, suggesting they may need hyperparameter optimization
+- **Decision Tree** shows poor generalization and overfitting
+- **Ensemble methods** (Random Forest, XGBoost) perform well but are more conservative than kNN
 
 ## Installation and Setup
 
