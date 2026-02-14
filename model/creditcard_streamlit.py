@@ -364,12 +364,12 @@ elif page == "📈 Model Evaluation":
     # Performance metrics (based on training set evaluation from notebook)
     performance_data = {
         'Model': ['Logistic Regression', 'Decision Tree', 'K-Nearest Neighbors', 'Naive Bayes', 'Random Forest', 'XGBoost'],
-        'Accuracy': [80.72, 22.47, 84.40, 42.27, 67.08, 67.48],
-        'AUC Score': [0.7446, 0.3819, 0.8819, 0.7385, 0.5697, 0.6117],
-        'Precision': [68.99, 17.32, 72.41, 26.10, 24.64, 32.32],
-        'Recall': [23.34, 66.38, 47.65, 87.93, 23.71, 42.96],
-        'F1 Score': [34.88, 27.47, 57.48, 40.26, 24.17, 36.89],
-        'MCC Score': [32.11, -27.29, 50.01, 16.41, 3.15, 15.86]
+        'Accuracy': [80.72, 23.21, 82.57, 42.27, 80.11, 79.77],
+        'AUC Score': [0.7446, 0.3579, 0.8449, 0.7385, 0.7173, 0.7361],
+        'Precision': [68.99, 16.20, 72.56, 26.10, 68.64, 72.32],
+        'Recall': [23.34, 59.20, 34.11, 87.93, 18.59, 13.83],
+        'F1 Score': [34.88, 25.43, 46.41, 40.26, 29.26, 23.21],
+        'MCC Score': [32.11, -29.34, 41.40, 16.41, 28.29, 25.41]
     }
     
     perf_df = pd.DataFrame(performance_data)
@@ -447,15 +447,15 @@ elif page == "📈 Model Evaluation":
     with col1:
         st.info("""
         **🏆 Best Overall: K-Nearest Neighbors**
-        - Highest accuracy (84.4%)
-        - Best AUC score (0.882)
+        - Highest accuracy (82.57%)
+        - Best AUC score (0.845)
         - Good balance of precision and recall
         """)
     
     with col2:
         st.warning("""
         **⚠️ Conservative Choice: Logistic Regression**
-        - High precision (69%)
+        - High precision (69.0%)
         - Low false positive rate
         - Good for minimizing false alarms
         """)
@@ -463,7 +463,7 @@ elif page == "📈 Model Evaluation":
     with col3:
         st.error("""
         **🔍 High Recall: Naive Bayes**
-        - Highest recall (87.9%)
+        - Highest recall (87.93%)
         - Catches most defaults
         - High false positive rate
         """)

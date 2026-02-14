@@ -506,19 +506,19 @@ print(f" Features after scaling: {len(numerical_features)} numerical features")
 logistic_model = LogisticRegression(random_state=42, max_iter=1000)
 
 # 6.2.2 Decision Tree
-decision_tree_model = DecisionTreeClassifier(random_state=42)
+decision_tree_model = DecisionTreeClassifier(random_state=42,max_depth=15)
 
 # 6.2.3 K-Nearest Neighbors
-knn_model = KNeighborsClassifier(n_neighbors=5)
+knn_model = KNeighborsClassifier(n_neighbors=10)
 
 # 6.2.4 Naive Bayes
 naive_bayes_model = GaussianNB()
 
 # 6.2.5 Random Forest
-random_forest_model = RandomForestClassifier(random_state=42, n_estimators=100)
+random_forest_model = RandomForestClassifier(random_state=42, n_estimators=4500, max_depth=10, min_samples_split=10, min_samples_leaf=5)
 
 # 6.2.6 XGBoost
-xgboost_model = XGBClassifier(random_state=42, eval_metric='logloss', use_label_encoder=False)
+xgboost_model = XGBClassifier(random_state=42, eval_metric='logloss', n_estimators=200,use_label_encoder=False,learning_rate=0.0001,max_depth=6,subsample=0.8,colsample_bytree=0.8)
 
 
 
@@ -717,14 +717,35 @@ for idx, (model_name, model) in enumerate(trained_models.items()):
     y_pred = model.predict(X_train_scaled)
     accuracy = accuracy_score(y_train, y_pred)
     
-    # Confusion Matrix
+    # Confusion Matrix with custom colors - correct (diagonal) in light green, wrong in light red
     cm = confusion_matrix(y_train, y_pred)
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=axes[idx], 
-                xticklabels=['No Default', 'Default'], 
-                yticklabels=['No Default', 'Default'])
+    
+    # Create color matrix: diagonal (correct) = light green, off-diagonal (wrong) = light red
+    colors = [['lightgreen' if i == j else 'lightcoral' for j in range(2)] for i in range(2)]
+    
+    # Create annotation matrix with values
+    annot = [[f'{cm[i, j]}' for j in range(2)] for i in range(2)]
+    
+    # Plot with custom colors
+    for i in range(2):
+        for j in range(2):
+            axes[idx].add_patch(plt.Rectangle((j, i), 1, 1, 
+                                               facecolor=colors[i][j], 
+                                               edgecolor='black',
+                                               linewidth=1))
+            axes[idx].text(j + 0.5, i + 0.5, annot[i][j],
+                          ha='center', va='center', fontsize=14, fontweight='bold')
+    
+    axes[idx].set_xlim(0, 2)
+    axes[idx].set_ylim(0, 2)
+    axes[idx].set_xticks([0.5, 1.5])
+    axes[idx].set_yticks([0.5, 1.5])
+    axes[idx].set_xticklabels(['No Default', 'Default'])
+    axes[idx].set_yticklabels(['No Default', 'Default'], rotation=90, va='center')
     axes[idx].set_title(f'{model_name}\nAccuracy: {accuracy:.3f}', fontsize=10)
     axes[idx].set_xlabel('Predicted')
     axes[idx].set_ylabel('Actual')
+    axes[idx].invert_yaxis()
 
 plt.tight_layout()
 plt.show()

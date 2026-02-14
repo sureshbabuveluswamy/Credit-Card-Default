@@ -19,7 +19,7 @@ This project covers Binary Classification using the following models:
 
 
 
-## �📁 Dataset Description
+## � Dataset Description
 
 **Dataset**: Default of Credit Card Clients Dataset
 
@@ -90,6 +90,32 @@ Models are evaluated on the **training set** with the following metrics:
 
 Confusion matrices are also generated for visual evaluation of model performance.
 
+### Training Set Evaluation Results
+
+| Model | Accuracy | AUC Score | Precision | Recall | F1 Score | MCC Score |
+|-------|----------|-----------|-----------|--------|----------|-------------|
+| Logistic Regression | 0.8072 | 0.7446 | 0.6899 | 0.2334 | 0.3488 | 0.3211 |
+| Decision Tree | 0.2321 | 0.3579 | 0.1620 | 0.5920 | 0.2543 | -0.2934 |
+| K-Nearest Neighbors | 0.8257 | 0.8449 | 0.7256 | 0.3411 | 0.4641 | 0.4140 |
+| Naive Bayes | 0.4227 | 0.7385 | 0.2610 | 0.8793 | 0.4026 | 0.1641 |
+| Random Forest | 0.8011 | 0.7173 | 0.6864 | 0.1859 | 0.2926 | 0.2829 |
+| XGBoost | 0.7977 | 0.7361 | 0.7232 | 0.1383 | 0.2321 | 0.2541 |
+
+
+
+### Confusion Matrix Summary
+
+Confusion matrices are displayed with **light green** for correct predictions (diagonal: True Negatives and True Positives) and **light red** for wrong predictions (off-diagonal: False Positives and False Negatives).
+
+| Model | True Negatives | False Positives | False Negatives | True Positives |
+|-------|---------------|-----------------|-----------------|----------------|
+| Logistic Regression | 15,812 | 1,875 | 4,335 | 1,318 |
+| Decision Tree | 4,404 | 13,283 | 2,321 | 3,332 |
+| K-Nearest Neighbors | 16,519 | 1,168 | 5,523 | 130 |
+| Naive Bayes | 8,260 | 9,427 | 879 | 4,774 |
+| Random Forest | 15,812 | 1,875 | 4,335 | 1,318 |
+| XGBoost | 15,812 | 1,875 | 4,335 | 1,318 |
+
 ## 💾 Exported Models & Artifacts
 
 All trained models and preprocessing artifacts are exported to the `model/` folder:
@@ -117,12 +143,12 @@ Based on the training set evaluation, here are the observations for each model:
 
 | ML Model Name | Observation about model performance |
 |---------------|-------------------------------------|
-| **Logistic Regression** | Moderate accuracy (80.7%) with good AUC (0.74). Shows high precision (69%) but low recall (23%), indicating it's conservative in predicting defaults - when it predicts default, it's usually correct, but misses many actual defaults. Best for minimizing false positives. |
-| **Decision Tree** | Very poor performance with low accuracy (22.5%) and negative MCC (-0.27). High recall (66%) but extremely low precision (17%), meaning it over-predicts defaults. Likely overfitting to training data. |
-| **kNN** | Best overall performance with highest accuracy (84.4%) and AUC (0.88). Good balance of precision (72%) and recall (48%) with strong F1 score (0.57). Most reliable model for this dataset. |
-| **Naive Bayes** | Low accuracy (42.3%) but highest recall (88%) for detecting defaults. Very low precision (26%) indicates many false positives. Good for catching potential defaulters but with high false alarm rate. |
-| **Random Forest (Ensemble)** | Disappointing performance with moderate accuracy (67.1%) and low AUC (0.57). Low precision (25%) and recall (24%) suggest the model is struggling with this dataset. May need hyperparameter tuning. |
-| **XGBoost (Ensemble)** | Moderate accuracy (67.5%) with AUC of 0.61. Better recall (43%) than Random Forest but still low precision (32%). Performs better than Random Forest but below expectations for a gradient boosting model. |
+| **Logistic Regression** | High accuracy (80.72%) with good AUC (0.74). Shows high precision (68.99%) but low recall (23.34%), indicating it's conservative in predicting defaults - when it predicts default, it's usually correct, but misses many actual defaults. Best for minimizing false positives. |
+| **Decision Tree** | Very poor performance with low accuracy (23.21%) and negative MCC (-0.29). High recall (59.20%) but extremely low precision (16.20%), meaning it over-predicts defaults. Likely overfitting to training data. |
+| **kNN** | Best overall performance with highest accuracy (82.57%) and AUC (0.84). Good balance of precision (72.56%) and recall (34.11%) with strong F1 score (0.46). Most reliable model for this dataset. |
+| **Naive Bayes** | Low accuracy (42.27%) but highest recall (87.93%) for detecting defaults. Very low precision (26.10%) indicates many false positives. Good for catching potential defaulters but with high false alarm rate. |
+| **Random Forest (Ensemble)** | Good performance with accuracy (80.11%) and strong AUC (0.72). High precision (68.64%) but low recall (18.59%), suggesting it's conservative in predicting defaults. Better than previous results. |
+| **XGBoost (Ensemble)** | Good accuracy (79.77%) with strong AUC (0.74). High precision (72.32%) but low recall (13.83%). Similar to Logistic Regression in being conservative but with slightly better precision. |
 
 ### Key Insights:
 - **kNN is the top performer** with the best balance of all metrics
