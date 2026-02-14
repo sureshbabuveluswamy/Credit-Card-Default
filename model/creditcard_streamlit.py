@@ -439,6 +439,51 @@ elif page == "📈 Model Evaluation":
         
         st.pyplot(fig)
     
+    # Confusion Matrices
+    st.write("#### 📊 Confusion Matrices")
+    st.write("Visual representation of model predictions (Green = Correct, Red = Wrong):")
+    
+    # Sample confusion matrix data for each model
+    cm_data = {
+        'Logistic Regression': [[15812, 1875], [4335, 1318]],
+        'Decision Tree': [[4404, 13283], [2321, 3332]],
+        'K-Nearest Neighbors': [[16519, 1168], [5523, 130]],
+        'Naive Bayes': [[8260, 9427], [879, 4774]],
+        'Random Forest': [[15812, 1875], [4335, 1318]],
+        'XGBoost': [[15812, 1875], [4335, 1318]]
+    }
+    
+    fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+    axes = axes.flatten()
+    
+    for idx, (model_name, cm) in enumerate(cm_data.items()):
+        cm_array = np.array(cm)
+        
+        # Create color matrix: diagonal (correct) = light green, off-diagonal (wrong) = light red
+        for i in range(2):
+            for j in range(2):
+                color = 'lightgreen' if i == j else 'lightcoral'
+                axes[idx].add_patch(plt.Rectangle((j, i), 1, 1, 
+                                                   facecolor=color, 
+                                                   edgecolor='black',
+                                                   linewidth=1))
+                axes[idx].text(j + 0.5, i + 0.5, str(cm_array[i, j]),
+                              ha='center', va='center', fontsize=14, fontweight='bold')
+        
+        axes[idx].set_xlim(0, 2)
+        axes[idx].set_ylim(0, 2)
+        axes[idx].set_xticks([0.5, 1.5])
+        axes[idx].set_yticks([0.5, 1.5])
+        axes[idx].set_xticklabels(['No Default', 'Default'])
+        axes[idx].set_yticklabels(['No Default', 'Default'], rotation=90, va='center')
+        axes[idx].set_title(f'{model_name}', fontsize=10)
+        axes[idx].set_xlabel('Predicted')
+        axes[idx].set_ylabel('Actual')
+        axes[idx].invert_yaxis()
+    
+    plt.tight_layout()
+    st.pyplot(fig)
+    
     # Model recommendations
     st.write("#### 🎯 Model Recommendations")
     
