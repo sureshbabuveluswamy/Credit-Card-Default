@@ -94,7 +94,7 @@ if 'current_page' not in st.session_state:
     st.session_state.current_page = "📋 Model Overview"
 
 # Navigation buttons
-pages = ["📋 Model Overview", "📊 Model Visualization", "📥 Download Dataset", "📤 Upload & Predict", "📈 Model Evaluation"]
+pages = ["📋 Model Overview", "📊 Model Visualization", "📥 Download Dataset", "📤 Upload & Predict", "📈 Model Evaluation", "📄 README"]
 
 for page in pages:
     if st.sidebar.button(page, use_container_width=True):
@@ -467,6 +467,21 @@ elif page == "📈 Model Evaluation":
         - Catches most defaults
         - High false positive rate
         """)
+
+# Page 6: README
+elif page == "📄 README":
+    st.markdown('<h2 class="section-header">📄 README</h2>', unsafe_allow_html=True)
+    
+    # Get parent directory for README
+    readme_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'README.md')
+    
+    try:
+        with open(readme_path, 'r') as f:
+            readme_content = f.read()
+        st.markdown(readme_content)
+    except Exception as e:
+        st.error(f"Could not load README.md: {e}")
+        st.info("README.md should be in the repository root directory.")
 
 # Footer
 st.markdown("---")
